@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function(e){
         if (datosCompletos) {
 
             if (ingEmail.value, ingContraseña.value) {
-                window.location = 'Inicio.html';
+                window.location = 'index.html';
             }
             else {
                 alert("Usuario o contraseña incorrectas!")
