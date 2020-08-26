@@ -20,6 +20,8 @@ document.addEventListener("DOMContentLoaded", function(e){
         if (datosCompletos) {
 
             if (ingEmail.value, ingContraseña.value) {
+
+                localStorage.setItem('User-Logged', ingEmail.value);
                 window.location = 'inicio2.html';
             }
             else {
