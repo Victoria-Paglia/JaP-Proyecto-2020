@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function(e){
 
             if (ingEmail.value, ingContraseña.value) {
 
-                localStorage.setItem('User-Logged', ingEmail.value);
+                localStorage.setItem('User-Logged', JSON.stringify({email: ingEmail.value}));
                 window.location = 'inicio2.html';
             }
             else {

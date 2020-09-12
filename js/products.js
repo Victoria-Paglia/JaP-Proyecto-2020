@@ -61,10 +61,10 @@ function showProductsList(array) {
                         <p >`+ product.description + `</p>
                         <p>`+ product.cost + `</p>
                         <p>`+ product.currency + `</p>
+                        <a href="product-info.html"> Ver producto </a>
                         </div>
-                    <small class="text-muted">` + product.soldCount + ` artículos</small>
+                        <small class="text-muted">` + product.soldCount + ` artículos</small>
                     </div>
-
                 </div>
             </div>
             </div>
@@ -77,86 +77,86 @@ function showProductsList(array) {
     }
 }
 
-    //Función que se ejecuta una vez que se haya lanzado el evento de
-    //que el documento se encuentra cargado, es decir, se encuentran todos los
-    //elementos HTML presentes.
+//Función que se ejecuta una vez que se haya lanzado el evento de
+//que el documento se encuentra cargado, es decir, se encuentran todos los
+//elementos HTML presentes.
 
-    document.addEventListener("DOMContentLoaded", function (e) {
-        getJSONData(PRODUCTS_URL).then(function (resultObj) {
-            if (resultObj.status === "ok") {
-                productsArray = resultObj.data;
-                productsArray = sortProducts(ORDER_ASC_BY_COST, productsArray)
-                showProductsList(productsArray);
-            }
-        });
-
-        document.getElementById("precioAsc").addEventListener("click", function () {
-
+document.addEventListener("DOMContentLoaded", function (e) {
+    getJSONData(PRODUCTS_URL).then(function (resultObj) {
+        if (resultObj.status === "ok") {
+            productsArray = resultObj.data;
             productsArray = sortProducts(ORDER_ASC_BY_COST, productsArray)
-
             showProductsList(productsArray);
-        });
+        }
+    });
 
-        document.getElementById("precioDesc").addEventListener("click", function () {
+    document.getElementById("precioAsc").addEventListener("click", function () {
 
-            productsArray = sortProducts(ORDER_DESC_BY_COST, productsArray)
+        productsArray = sortProducts(ORDER_ASC_BY_COST, productsArray)
 
-            showProductsList(productsArray);
-        });
+        showProductsList(productsArray);
+    });
 
-        document.getElementById("countDesc").addEventListener("click", function () {
+    document.getElementById("precioDesc").addEventListener("click", function () {
 
-            productsArray = sortProducts(ORDER_DESC_BY_SOLD_COUNT, productsArray)
+        productsArray = sortProducts(ORDER_DESC_BY_COST, productsArray)
 
-            showProductsList(productsArray);
-        });
+        showProductsList(productsArray);
+    });
 
-        document.getElementById("añadir").addEventListener("click", function () {
+    document.getElementById("countDesc").addEventListener("click", function () {
 
-            precioMin = document.getElementById("precio-min").value;
-            precioMax = document.getElementById("precio-máx").value;
+        productsArray = sortProducts(ORDER_DESC_BY_SOLD_COUNT, productsArray)
 
-            if ((precioMin !== undefined) && (precioMin !== "") && (parseInt(precioMin)) >= 0) {
-                precioMin = parseInt(precioMin)
-            }
-            else {
-                precioMin = undefined
-            }
+        showProductsList(productsArray);
+    });
 
-            if ((precioMax !== undefined) && (precioMax !== "") && (parseInt(precioMax)) >= 0) {
-                precioMax = parseInt(precioMax)
-            }
-            else {
-                precioMax = undefined
-            }
+    document.getElementById("añadir").addEventListener("click", function () {
 
-            showProductsList(productsArray);
+        precioMin = document.getElementById("precio-min").value;
+        precioMax = document.getElementById("precio-máx").value;
 
-        });
+        if ((precioMin !== undefined) && (precioMin !== "") && (parseInt(precioMin)) >= 0) {
+            precioMin = parseInt(precioMin)
+        }
+        else {
+            precioMin = undefined
+        }
 
+        if ((precioMax !== undefined) && (precioMax !== "") && (parseInt(precioMax)) >= 0) {
+            precioMax = parseInt(precioMax)
+        }
+        else {
+            precioMax = undefined
+        }
 
-        document.getElementById("borrar").addEventListener("click", function () {
-            document.getElementById("precio-min").value = "";
-            document.getElementById("precio-máx").value = "";
-
-            precioMin = undefined;
-            precioMax = undefined;
-
-            showProductsList(productsArray);
-
-        });
-
-        document.getElementById("buscador").addEventListener("input", function () {
-            buscador = document.getElementById("buscador").value.toLowerCase();
-            showProductsList(productsArray);
-        });
-
-        document.getElementById("limpBuscador").addEventListener("click", function () {
-            document.getElementById("buscador").value = "";
-
-            buscador = undefined;
-
-            showProductsList(productsArray);
-        })
+        showProductsList(productsArray);
 
     });
+
+
+    document.getElementById("borrar").addEventListener("click", function () {
+        document.getElementById("precio-min").value = "";
+        document.getElementById("precio-máx").value = "";
+
+        precioMin = undefined;
+        precioMax = undefined;
+
+        showProductsList(productsArray);
+
+    });
+
+    document.getElementById("buscador").addEventListener("input", function () {
+        buscador = document.getElementById("buscador").value.toLowerCase();
+        showProductsList(productsArray);
+    });
+
+    document.getElementById("limpBuscador").addEventListener("click", function () {
+        document.getElementById("buscador").value = "";
+
+        buscador = undefined;
+
+        showProductsList(productsArray);
+    })
+
+});
