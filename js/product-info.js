@@ -1,5 +1,38 @@
+var product = {};
 var productsArray = [];
 var comentariosArray = [];
+
+function showRelProd(productsArray, relacionadosArray) {
+    let product = productsArray;
+    let cont = "";
+
+    relacionadosArray.forEach(function (i) {
+
+      cont += `
+      <div class="list-group-item list-group-item-action">
+      <div class="row">
+          <div class="col-3">
+              <img src="` + product[i].imgSrc + `" alt="` + product[i].description + `" class="img-thumbnail">
+          </div>
+          <div class="col">
+              <div class="d-flex w-100 justify-content-between">
+                  <div class="mb-1">    
+                  <h4>`+ product[i].name + `</h4>
+                  <p >`+ product[i].description + `</p>
+                  <p>`+ product[i].cost + `</p>
+                  <p>`+ product[i].currency + `</p>
+                  <a href="product-info.html"> Ver producto </a>
+                  </div>
+                  <small class="text-muted">` + product[i].soldCount + ` artículos</small>
+              </div>
+          </div>
+      </div>
+      </div>
+      `
+    });
+
+    document.getElementById("relacionados").innerHTML = cont;
+}
 
 function showInfo(array, comentariosArray) {
     let product = array;
@@ -15,11 +48,42 @@ function showInfo(array, comentariosArray) {
     informacion += '<dt>Cantidad de productos vendidos</dt>' + '<dd><p>' + product.soldCount + '</p></dd>'
     informacion += '<dt>Categoria:</dt>' + '<dd><p>' + product.category + '</p></dd>';
 
-
-    imagenes += '<img class="img-fluid img-thumbnail" src="img/prod1.jpg" alt="">' +
-        '<img class="img-fluid img-thumbnail" src="img/prod1_1.jpg" alt="">' + '<img class="img-fluid img-thumbnail" src="img/prod1_2.jpg" alt="">' +
-        '<img class="img-fluid img-thumbnail"src="img/prod1_3.jpg" alt="">' + '<img class="img-fluid img-thumbnail" src="img/prod1_4.jpg" alt=""></dl>';
-
+    imagenes += `
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="img/prod1.jpg" class="d-block" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="img/prod1_1.jpg" class="d-block" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="img/prod1_2.jpg" class="d-block" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="img/prod1_3.jpg" class="d-block" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="img/prod1_4.jpg" class="d-block" alt="...">
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+    `
 
     comentariosArray.forEach(function (comentario) {
         let calificación = "";
@@ -59,10 +123,11 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
     getJSONData(PRODUCT_INFO_URL).then(function (resultObj) {
         if (resultObj.status === "ok") {
-            productsArray = resultObj.data;
-            showInfo(productsArray, comentariosArray);
+            product = resultObj.data;
+            showInfo(product, comentariosArray);
         }
     });
+
 
     document.getElementById("enviarCom").addEventListener("click", function () {
 
@@ -83,4 +148,13 @@ document.addEventListener("DOMContentLoaded", function (e) {
         showInfo(productsArray, comentariosArray)
 
     })
+
+    getJSONData(PRODUCTS_URL).then(function (resultObj) {
+        if (resultObj.status === "ok") {
+            productsArray = resultObj.data;
+
+            showRelProd(productsArray, product.relatedProducts);
+        }
+    });
+
 })

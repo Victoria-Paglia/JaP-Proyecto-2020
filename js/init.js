@@ -49,10 +49,11 @@ document.addEventListener("DOMContentLoaded", function (e) {
   let usuario = document.getElementById("usuario")
 
   if (userLogged) {
-    usuario.innerText += 'Usuario: ' + userLogged;
+    usuario.innerText += userLogged;
   };
-  document.getElementById("salir").addEventListener("click", function () {
-    document.getElementById("infoUsuario").remove();
-
-  });
+  
+  document.getElementById("salir").addEventListener("click",function() {
+      localStorage.removeItem("userLogged");
+      window.location = "index.html";
+  })
 });

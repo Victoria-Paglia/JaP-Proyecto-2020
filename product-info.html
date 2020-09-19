@@ -25,14 +25,15 @@
       <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
       <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-      <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
-      <div id="infoUsuario" style="color: white; display: none;">
-        <p class="py-2 d-none d-md-inline-block" id="usuario"></p>
-        <div class="btn-group" role="group">
-          <button class="btn btn-light btn-block" id="salir">Salir</button>
+      <div class="dropdown" id="infoUsuario">
+        <button id="usuario" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false"></button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="cart.html">Mi carrito</a>
+          <a class="dropdown-item" href="my-profile.html">Mi perfil</a>
+          <a class="dropdown-item" id="salir">Cerrar sesión</a>
         </div>
       </div>
-    </div>
     </div>
   </nav>
   <main role="main">
@@ -47,22 +48,20 @@
         <div id="información"></div>
 
         <dt>Imágenes ilustrativas</dt>
-        <dd>
-          <div class="row text-center text-lg-left pt-2" >
-            <div class="col-lg-3 col-md-4 col-6">
-              <div class="d-block mb-4 h-100">
-                <div id="imagenes"></div>
-              </div>
-            </div>
-          </div>
-        </dd>
 
-        <p>Comentarios:</p>
+
+        <dd>
+          <div class="row text-center text-lg-left pt-2">
+            <div id="imagenes"></div>
+          </div>
+        </dd><br><br>
+
+        <h4>Comentarios:</h4><br>
         <div id="comentarios"></div>
 
         <div id="nuevoComentario" style="display: none;">
 
-          <p>Comentar:</p>
+          <h4>Comentar:</h4><br>
 
           <textarea id="comentar" rows="8" cols="60"></textarea>
 
@@ -74,8 +73,12 @@
           <hr>
         </div>
 
-      </div>
-      <a href="products.html">Ver productos</a>
+        <h4>Productos relacionados:</h4><br><br>
+        <div id="relacionados">
+        </div>
+
+      </div><br><br>
+      <a type="button" href="products.html" class="btn btn-lg btn-light btn-block">Ver productos</a>
   </main>
   <footer class="text-muted">
     <div class="container">
