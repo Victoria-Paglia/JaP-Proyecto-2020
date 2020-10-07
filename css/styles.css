@@ -143,3 +143,34 @@ a.custom-card:hover {
 .fa {
   text-align: right;
 }
+
+table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  border: 3px solid #0087F7;
+}
+
+thead th, tfoot th {
+  font-family: 'Raleway', cursive;
+  border-collapse: collapse;
+  border: 3px solid #0087F7;
+}
+
+th {
+  letter-spacing: 2px;
+}
+
+td {
+  letter-spacing: 1px;
+}
+
+tbody td {
+  border-collapse: collapse;
+  border: 3px solid #0087F7;
+  text-align: center;
+}
+
+tfoot th {
+  text-align: right;
+}

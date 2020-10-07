@@ -40,7 +40,6 @@
       <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
       <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-      <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
       <div class="dropdown" id="infoUsuario">
         <button id="usuario" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false"></button>
@@ -52,14 +51,57 @@
       </div>
     </div>
   </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 5 (Fecha de entrega: 11/10/2020) y Entrega 6 (Fecha de entrega: 25/10/2020).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
-    </div>
-  </div>
+  <main role="main">
+    <div class="container mt-5">
+      <div class="text-center p-4">
+        <h2>Carrito de compra</h2>
+        <p class="lead">Aquí se mostraran los productos que quiera comprar.</p>
+      </div>
+      <div class="verInfo">
+        <div id="información">
+          <table class="table">
+            <thead>
+              <th>Imagen</th>
+              <th>Articulo</th>
+              <th>Cantidad</th>
+              <th>Costo unidad</th>
+              <th>Costo (UYU) <small class="text-muted">SubTotal</small></th>
+            </thead>
+            <tbody id="artCarrito">
+            </tbody>
+            <tfoot>
+              <td colspan="4" id="total"><strong>Total</strong></td>
+              <td><span id="precioTotal"></span></td>
+            </tfoot>
+          </table><br><br>
+          <h5 class="tipoEnvio">Seleccione tipo de envío:</h5>
+            <div>
+              <input class="form-check-input" id="premiumradio" name="costEnvio" type="radio" value="15" checked="" required="">
+              <label class="form-check-label" for="premiumradio">Premium</label><br>
+              <input class="form-check-input" id="expressradio" name="costEnvio" type="radio" value="7" required="">
+              <label class="form-check-label" for="expressradio">Express</label><br>
+              <input class="form-check-input" id="standardradio" name="costEnvio" type="radio" value="8" required="">
+              <label class="form-check-label" for="standardradio">Standard</label><br>
+            </div><br><br>
+            
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Total</th>
+                  <th>Costo envio</th>
+                </tr>
+              </thead>
+              <tbody id="precioFinal">
+            </table><br><br>
+
+          <button class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#exampleModalCenter">
+            Comprar
+          </button>
+        </div>
+        </dd><br><br>
+      </div><br><br>
+      <a type="button" href="products.html" class="btn btn-lg btn-light btn-block">Ver productos</a>
+  </main>
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>
