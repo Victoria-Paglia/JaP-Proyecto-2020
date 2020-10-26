@@ -99,7 +99,7 @@ function borrar(i){
     } else {
         document.getElementById("información").innerHTML = `
         <h3>No hay articulos en el carrito!</h3>
-        <p>Puede elegir articulos en nuestro menú de <a href=inicio2.html">productos</a></p>
+        <p>Puede elegir articulos en nuestro menú de <a href="products.html">productos</a></p>
         `
     }
 }
