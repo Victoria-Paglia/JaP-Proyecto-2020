@@ -66,24 +66,67 @@
               <th>Cantidad</th>
               <th>Costo unidad</th>
               <th>Costo (UYU) <small class="text-muted">SubTotal</small></th>
+              <th>Eliminar</th>
             </thead>
             <tbody id="artCarrito">
             </tbody>
             <tfoot>
-              <td colspan="4" id="total"><strong>Total</strong></td>
+              <td colspan="5" id="total"><strong>Total</strong></td>
               <td><span id="precioTotal"></span></td>
             </tfoot>
           </table><br><br>
-          <h5 class="tipoEnvio">Seleccione tipo de envío:</h5>
+
+          <form id="validar" novalidate>
             <div>
-              <input class="form-check-input" id="premiumradio" name="costEnvio" type="radio" value="15" checked="" required="">
-              <label class="form-check-label" for="premiumradio">Premium</label><br>
-              <input class="form-check-input" id="expressradio" name="costEnvio" type="radio" value="7" required="">
-              <label class="form-check-label" for="expressradio">Express</label><br>
-              <input class="form-check-input" id="standardradio" name="costEnvio" type="radio" value="8" required="">
-              <label class="form-check-label" for="standardradio">Standard</label><br>
-            </div><br><br>
-            
+              <label for="país">País</label><br>
+              <select class="form-control" id="país">
+                <option>---</option>
+                <option>Uruguay</option>
+              </select><br>
+
+              <label for="depto">Departamento</label><br>
+              <select class="form-control" id="depto">
+                <option>---</option>
+                <option>Montevideo</option>
+                <option>Artigas</option>
+                <option>Canelones</option>
+                <option>Cerro Largo</option>
+                <option>Colonia</option>
+                <option>Durazono</option>
+                <option>Flores</option>
+                <option>Florida</option>
+                <option>Lavalleja</option>
+                <option>Maldonado</option>
+                <option>Paysandú</option>
+                <option>Río Negro</option>
+                <option>Rivera</option>
+                <option>Rocha</option>
+                <option>Salto</option>
+                <option>San José</option>
+                <option>Soriano</option>
+                <option>Tacuarembó</option>
+                <option>Treinta y Tres</option>
+              </select><br>
+
+              <label for="dirección">Dirección</label>
+              <input type="text" id="dirección" class="form-control" placeholder="Calle, esquina, n° puerta" required=""><br> <br>
+
+              <label for="receptor">Nombre receptor</label>
+              <input type="text" id="receptor" class="form-control" placeholder="Nombre de quien recibe el articulo" required=""><br>
+
+              <h5 class="tipoEnvio">Seleccione tipo de envío:</h5>
+              <div>
+                <input class="form-check-input" id="premiumradio" name="costEnvio" type="radio" value="15" checked="" required="">
+                <label class="form-check-label" for="premiumradio">Premium</label><br>
+                <input class="form-check-input" id="expressradio" name="costEnvio" type="radio" value="7" required="">
+                <label class="form-check-label" for="expressradio">Express</label><br>
+                <input class="form-check-input" id="standardradio" name="costEnvio" type="radio" value="8" required="">
+                <label class="form-check-label" for="standardradio">Standard</label><br>
+              </div><br><br>
+            </div>
+            <button type="submit" id="metPago" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#modalFormaPago">Seleccionar forma de pago</button><br><br>
+            <div id="elección"></div>
+
             <table class="table">
               <thead>
                 <tr>
@@ -93,14 +136,61 @@
               </thead>
               <tbody id="precioFinal">
             </table><br><br>
+    
+            <button type="submit" id="comprar" class="btn btn-primary btn-lg btn-block">Comprar</button>
 
-          <button class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#exampleModalCenter">
-            Comprar
-          </button>
+          </form>
+
+          <div class="modal fade" id="modalFormaPago">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Seleccione forma de pago:</h5>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <div>
+                      <input id="tarjetaCredito" name="formaPago" type="radio" value="1" checked="" required="">
+                      <label for="tarjetaCredito">Tarjeta de credito</label> <br>
+
+                      <input id="transBancaria" name="formaPago" type="radio" value="2" required="">
+                      <label for="transBancaria">Transferencia bancaria</label> <br>
+                    </div>
+
+                    <div id="infoTar">
+                      <label for="tipoTarj">Seleccione tipo de tarjeta</label><br>
+                      <select class="form-control" id="tipoTarj" required="">
+                        <option>Visa</option>
+                        <option>Mastercard</option>
+                        <option>American Express</option>
+                        <option>Diners Club</option>
+                      </select><br>
+                      <input id="numTarj" type="number" class="form-control" placeholder="Número de tarjeta" required=""><br>
+                    </div>
+
+                    <div id="infoTransBanc" class="d-none">
+                      <label for="tipoTransBanc">Seleccione tipo de transferencia bancaria</label><br>
+                      <select class="form-control" id="tipoTransBanc" required="">
+                        <option>Transferencia Nacional</option>
+                        <option>Transferencia Internacional</option>
+                      </select><br>
+                      <input id="numCuen" type="number" class="form-control" placeholder="Número cuenta bancaria" required=""><br>
+                    </div>
+                    <br>
+
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-block btn-success" data-dismiss="modal">Confirmar</button>
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        </dd><br><br>
-      </div><br><br>
-      <a type="button" href="products.html" class="btn btn-lg btn-light btn-block">Ver productos</a>
+      </div> <br><br>
+    </div><br><br>
+    <a type="button" href="products.html" class="btn btn-lg btn-light btn-block">Ver productos</a>
   </main>
   <div id="spinner-wrapper">
     <div class="lds-ring">
@@ -110,6 +200,7 @@
       <div></div>
     </div>
   </div>
+
   <script src="js/jquery-3.4.1.min.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/dropzone.js"></script>
