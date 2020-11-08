@@ -49,25 +49,18 @@ function showProductsList(array) {
 
             if (buscador == undefined || product.name.toLowerCase().indexOf(buscador) != -1) {
                 htmlContentToAppend += `
-            <div class="list-group-item list-group-item-action">
-            <div class="row">
-                <div class="col-3">
-                    <img src="` + product.imgSrc + `" alt="` + product.description + `" class="img-thumbnail">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <a href="product-info.html" class="card mb-4 shadow-sm custom-card">
+                        <img class="bd-placeholder-img card-img-top" src="` + product.imgSrc + `" >
+                        <h4 class="m-3">`+ product.name + `</h4>
+                        <small class="text-muted" style="text-align: right;">` + product.soldCount + ` artículos</small>
+                        <div class="card-body">
+                            <p class="card-text">`+ product.description + `</p>
+                            <p class="card-text">`+ product.cost + ` `+ product.currency + `</p>
+                        </div>  
+                    </a>
                 </div>
-                <div class="col">
-                    <div class="d-flex w-100 justify-content-between">
-                        <div class="mb-1">    
-                        <h4>`+ product.name + `</h4>
-                        <p >`+ product.description + `</p>
-                        <p>`+ product.cost + `</p>
-                        <p>`+ product.currency + `</p>
-                        <a href="product-info.html"> Ver producto </a>
-                        </div>
-                        <small class="text-muted">` + product.soldCount + ` artículos</small>
-                    </div>
-                </div>
-            </div>
-            </div>
+  
             `
             }
 

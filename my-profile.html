@@ -31,6 +31,7 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <link href="css/dropzone.css" rel="stylesheet">
+  <link href="css/Style-myProfile.css" rel="stylesheet">
 </head>
 
 <body>
@@ -51,39 +52,77 @@
       </div>
     </div>
   </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 7 (Fecha de entrega: 8/11/202020) -> Punto 1 y 2.</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
-    </div>
-  </div>
-  <footer class="text-muted bg-light">
-    <div class="container">
-      <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
-      <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
-    </div>
-  </footer>
-  <div class="alert fade alert-success" role="alert" id="alertResult">
-    <span id="resultSpan"></span>
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div id="spinner-wrapper">
-    <div class="lds-ring">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-  </div>
-  <script src="js/jquery-3.4.1.min.js"></script>
-  <script src="js/bootstrap.bundle.min.js"></script>
-  <script src="js/dropzone.js"></script>
-  <script src="js/init.js"></script>
-  <script src="js/my-profile.js"></script>
+
+  <main role="main">
+    <div class="container mt-5">
+      <div class="text-center p-4">
+        <h2>Mi perfil</h2>
+        <p class="lead">Aquí podras realizar cambios en tus datos personales y de contacto</p>
+        <p class="small alert-warning py-3"><strong>Nota: </strong>por favor, recuerda actualizar tus
+          datos de contacto para poder contactarnos en caso de ser necesario. <strong>Gracias!</strong></p>
+      </div>
+
+      <div style="margin-left: 10cm; margin-right: 10cm;">
+        <label for="urlImg">Imagen de perfil:</label><br>
+        <a  href="https://imgbb.com/"><img src="https://i.ibb.co/QMpGKG0/USER.png" alt="USER" borde="0" class="img-thumbnail"></a>
+        <br>
+      </div>
+
+      <div style="margin-left: 10cm; margin-right: 10cm;">
+
+        <input type="text" class="form-control" id="imgUrl" placeholder="Ingrese url para imagen de perfil" value=""><br><br>
+
+        <h5>Datos personales:</h5><br>
+
+        <dt><label for="name">Nombres</label></dt>
+        <input type="text" id="name" class="form-control" placeholder="" value=""><br>
+
+        <dt><label for="surname">Apellidos</label></dt>
+        <input type="text" id="surname" class="form-control" placeholder="" value=""><br>
+
+        <dt><label for="age">Edad</label></dt>
+        <input type="number" id="age" class="form-control" placeholder="" value="" min="18" max="75"><br> <br>
+
+        <h5>Datos de contacto:</h5><br>
+
+        <dt><label for="e-mail">E-mail</label></dt>
+        <input type="email" id="e-mail" class="form-control" placeholder="" value=""><br>
+
+        <dt><label for="phone">Teléfono</label></dt>
+        <input type="number" id="phone" class="form-control" placeholder="" value=""><br> <br>
+
+        <button id="enviarCambios" class="btn btn-primary btn-lg btn-block">Guardar cambios</button> <br><br>
+
+      </div>
+
+
+
+      <footer class="text-muted bg-light">
+        <div class="container">
+          <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
+          <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
+        </div>
+      </footer>
+      <div class="alert fade alert-success" role="alert" id="alertResult">
+        <span id="resultSpan"></span>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div id="spinner-wrapper">
+        <div class="lds-ring">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+      <script src="js/jquery-3.4.1.min.js"></script>
+      <script src="js/bootstrap.bundle.min.js"></script>
+      <script src="js/dropzone.js"></script>
+      <script src="js/init.js"></script>
+      <script src="js/my-profile.js"></script>
 </body>
+
 
 </html>
