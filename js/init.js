@@ -47,13 +47,15 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
   let userLogged = JSON.parse(localStorage.getItem('User-Logged')).email;
   let usuario = document.getElementById("usuario")
+  let profile = document.getElementById("profile")
 
   if (userLogged) {
     usuario.innerText += userLogged;
   };
   
   document.getElementById("salir").addEventListener("click",function() {
-      localStorage.removeItem("userLogged");
-      window.location = "index.html";
+      localStorage.removeItem('userLogged');
+      localStorage.removeItem('profile')
+      window.location = 'index.html';
   })
 });

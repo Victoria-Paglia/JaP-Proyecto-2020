@@ -2,7 +2,7 @@
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function (e) {
-    let perfil = localStorage.getItem('newProfile');
+    let perfil = localStorage.getItem('profile');
 
     if (perfil) {
 
@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
         document.getElementById("phone").value = perfil.telefono;
     }
 
-    document.getElementById("enviarCambios").addEventListener("click", function (e) {
+    document.getElementById("envCambios").addEventListener("click", function (e) {
         let validate = true;
         let imgUrl = document.getElementById("imgUrl")
         let nombres = document.getElementById("name")
@@ -40,32 +40,32 @@ document.addEventListener("DOMContentLoaded", function (e) {
             apellidos.classList.add("is-invalid")
             validate = false;
         } else {
-            nombres.classList.remove("is-invalid")
+            apellidos.classList.remove("is-invalid")
         }
 
         if (edad.value === '') {
             edad.classList.add("is-invalid")
             validate = false;
         } else {
-            nombres.classList.remove("is-invalid")
+            edad.classList.remove("is-invalid")
         }
 
         if (email.value === '') {
             email.classList.add("is-invalid")
             validate = false;
         } else {
-            nombres.classList.remove("is-invalid")
+            email.classList.remove("is-invalid")
         }
 
         if (telefono.value === '') {
             telefono.classList.add("is-invalid")
             validate = false;
         } else {
-            nombres.classList.remove("is-invalid")
+            telefono.classList.remove("is-invalid")
         }
 
         if (validate){
-            localStorage.setItem('newProfile', JSON.stringify({
+            localStorage.setItem('profile', JSON.stringify({
                 nombres: nombres.value,
                 apellidos: apellidos.value,
                 edad: edad.value,
